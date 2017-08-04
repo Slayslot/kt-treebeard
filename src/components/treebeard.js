@@ -7,7 +7,7 @@ import TreeNode from './node';
 import defaultDecorators from './decorators';
 import defaultTheme from '../themes/default';
 import defaultAnimations from '../themes/animations';
-import { ContextMenuProvider } from 'react-contexify';
+import { ContextMenuProvider } from 'kt-contexify';
 
 class TreeBeard extends React.Component {
     render() {
