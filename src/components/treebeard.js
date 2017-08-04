@@ -7,29 +7,48 @@ import TreeNode from './node';
 import defaultDecorators from './decorators';
 import defaultTheme from '../themes/default';
 import defaultAnimations from '../themes/animations';
+import { ContextMenuProvider } from 'react-contexify';
 
 class TreeBeard extends React.Component {
     render() {
-        const {animations, decorators, data: propsData, onToggle, style} = this.props;
+        const {animations, decorators, data: propsData, onToggle, style, contextMenuId} = this.props;
         let data = propsData;
 
         // Support Multiple Root Nodes. Its not formally a tree, but its a use-case.
         if (!Array.isArray(data)) {
             data = [data];
         }
-        return (
-            <ul style={style.tree.base}
-                ref={ref => this.treeBaseRef = ref}>
-                {data.map((node, index) =>
-                    <TreeNode animations={animations}
-                              decorators={decorators}
-                              key={node.id || index}
-                              node={node}
-                              onToggle={onToggle}
-                              style={style.tree.node}/>
-                )}
-            </ul>
-        );
+        if(contextMenuId === false){
+            return (
+                <ul style={style.tree.base}
+                    ref={ref => this.treeBaseRef = ref}>
+                    {data.map((node, index) =>
+                        <TreeNode animations={animations}
+                                  decorators={decorators}
+                                  key={node.id || index}
+                                  node={node}
+                                  onToggle={onToggle}
+                                  style={style.tree.node}/>
+                    )}
+                </ul>
+            );
+        } else {
+            return (
+                <ul style={style.tree.base}
+                    ref={ref => this.treeBaseRef = ref}>
+                    {data.map((node, index) =>
+                        <ContextMenuProvider id={contextMenuId} node={node}>
+                            <TreeNode animations={animations}
+                                      decorators={decorators}
+                                      key={node.id || index}
+                                      node={node}
+                                      onToggle={onToggle}
+                                      style={style.tree.node}/>
+                        </ContextMenuProvider>
+                    )}
+                </ul>
+            );
+        }
     }
 }
 
