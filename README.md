@@ -7,7 +7,7 @@ React Tree View Component. Data-Driven, Fast, Efficient and Customisable.
 ### Install
 
 ```
-npm install react-treebeard --save
+npm install kt-treebeard --save
 ```
 
 ### [Example](http://alexcurtis.github.io/react-treebeard/)
