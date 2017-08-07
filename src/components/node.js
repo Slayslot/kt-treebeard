@@ -90,7 +90,7 @@ class TreeNode extends React.Component {
             );
         } else {
             let menu;
-            if(projectName !== ''){
+            if(projectName !== node.name) {
                 menu = 'project';
             }else if(node.children !== null) {
                 menu = 'folder';
