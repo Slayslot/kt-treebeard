@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {VelocityTransitionGroup} from 'velocity-react';
+import { ContextMenuProvider } from 'kt-contexify';
 
 import NodeHeader from './header';
 
@@ -78,19 +79,30 @@ class TreeNode extends React.Component {
     }
 
     renderHeader(decorators, animations) {
-        const {node, style} = this.props;
-
-        return (
-            <NodeHeader animations={animations}
-                        decorators={decorators}
-                        node={Object.assign({}, node)}
-                        onClick={this.onClick}
-                        style={style}/>
-        );
+        const {node, style, contextMenuId} = this.props;
+        if(contextMenuId === false){
+            return (
+                <NodeHeader animations={animations}
+                            decorators={decorators}
+                            node={Object.assign({}, node)}
+                            onClick={this.onClick}
+                            style={style}/>
+            );
+        } else {
+            return (
+                <ContextMenuProvider id={contextMenuId} node={Object.assign({}, node)}>
+                    <NodeHeader animations={animations}
+                                decorators={decorators}
+                                node={Object.assign({}, node)}
+                                onClick={this.onClick}
+                                style={style}/>
+                </ContextMenuProvider>
+            );
+        }
     }
 
     renderChildren(decorators) {
-        const {animations, decorators: propDecorators, node, style} = this.props;
+        const {animations, decorators: propDecorators, node, style, contextMenuId} = this.props;
 
         if (node.loading) {
             return this.renderLoading(decorators);
@@ -109,7 +121,8 @@ class TreeNode extends React.Component {
                                                           decorators={propDecorators}
                                                           key={child.id || index}
                                                           node={child}
-                                                          style={style}/>
+                                                          style={style}
+                                                          contextMenuId={contextMenuId}/>
                 )}
             </ul>
         );
