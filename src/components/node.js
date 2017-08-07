@@ -79,7 +79,7 @@ class TreeNode extends React.Component {
     }
 
     renderHeader(decorators, animations) {
-        const {node, style, contextMenuId} = this.props;
+        const {node, style, contextMenuId, projectName } = this.props;
         if(contextMenuId === false) {
             return (
                 <NodeHeader animations={animations}
@@ -90,7 +90,9 @@ class TreeNode extends React.Component {
             );
         } else {
             let menu;
-            if(node.children !== null) {
+            if(projectName !== ''){
+                menu = 'project';
+            }else if(node.children !== null) {
                 menu = 'folder';
             } else if (node.IsKitsune) {
                 menu = 'pages';

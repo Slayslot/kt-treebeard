@@ -27,7 +27,8 @@ class TreeBeard extends React.Component {
                               node={node}
                               onToggle={onToggle}
                               style={style.tree.node}
-                              contextMenuId={contextMenuId} />
+                              contextMenuId={contextMenuId}
+                              projectName={data.name}/>
                 )}
             </ul>
         );
