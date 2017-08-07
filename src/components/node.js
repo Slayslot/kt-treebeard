@@ -90,7 +90,7 @@ class TreeNode extends React.Component {
             );
         } else {
             let menu;
-            if(projectName !== node.name) {
+            if(projectName === node.name) {
                 menu = 'project';
             }else if(node.children !== null) {
                 menu = 'folder';
@@ -112,7 +112,7 @@ class TreeNode extends React.Component {
     }
 
     renderChildren(decorators) {
-        const {animations, decorators: propDecorators, node, style, contextMenuId} = this.props;
+        const {animations, decorators: propDecorators, node, style, contextMenuId, projectName} = this.props;
 
         if (node.loading) {
             return this.renderLoading(decorators);
@@ -132,7 +132,8 @@ class TreeNode extends React.Component {
                                                           key={child.id || index}
                                                           node={child}
                                                           style={style}
-                                                          contextMenuId={contextMenuId}/>
+                                                          contextMenuId={contextMenuId}
+                                                          projectName={projectName}/>
                 )}
             </ul>
         );
