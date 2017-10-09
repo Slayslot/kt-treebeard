@@ -29,7 +29,7 @@ export default {
                     position: 'relative',
                     display: 'inline-block',
                     verticalAlign: 'top',
-                    marginLeft: '-5px',
+                    marginLeft: '-10px',
                     height: '24px',
                     width: '24px'
                 },
