@@ -90,14 +90,28 @@ class TreeNode extends React.Component {
             );
         } else {
             let menu;
-            if(projectName === node.name) {
+            const extensions = node.name.split('.');
+            const extensionOne = extensions[1];
+            const extensionTwo = extensions[2];
+            let fileExtension = 'txt';
+
+            if(extensionOne !== undefined) {
+                fileExtension = extensionOne.toLowerCase();
+            }
+
+            if(extensionTwo !== undefined) {
+                fileExtension = `${extensionOne}${extensionTwo}`.toLowerCase();
+            }
+            if (projectName === node.name) {
                 menu = 'project';
-            }else if(node.children !== null) {
+            } else if (node.children !== null) {
                 menu = 'folder';
-            } else if (node.IsKitsune) {
-                menu = 'pages';
-            } else if (!node.IsKitsune) {
-                menu = 'assets';
+            } else {
+                if (fileExtension === 'html' || fileExtension === 'htmldl' || fileExtension === 'htm' || fileExtension === 'htmdl') {
+                    menu = 'pages';
+                } else {
+                    menu = 'assets';
+                }
             }
             return (
                 <ContextMenuProvider id={contextMenuId[menu]} node={Object.assign({}, node)}>
