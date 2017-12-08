@@ -19,7 +19,8 @@ export default {
                 cursor: 'pointer',
                 position: 'relative',
                 padding: '0px 5px',
-                display: 'block'
+                display: 'block',
+                whiteSpace: 'nowrap'
             },
             activeLink: {
                 background: '#31363F'
@@ -28,10 +29,12 @@ export default {
                 base: {
                     position: 'relative',
                     display: 'inline-block',
-                    verticalAlign: 'top',
-                    marginLeft: '-10px',
-                    height: '24px',
-                    width: '24px'
+                    verticalAlign: 'middle',
+                    left: '3px',
+                    height: '8px',
+                    width: '6px',
+                    marginRight: '10px',
+                    top: '2px'
                 },
                 wrapper: {
                     position: 'absolute',
