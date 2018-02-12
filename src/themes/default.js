@@ -33,8 +33,7 @@ export default {
                     left: '3px',
                     height: '8px',
                     width: '6px',
-                    marginRight: '10px',
-                    top: '2px'
+                    marginRight: '10px'
                 },
                 wrapper: {
                     position: 'absolute',
