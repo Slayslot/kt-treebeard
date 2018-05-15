@@ -108,8 +108,8 @@ class TreeNode extends React.Component {
                 menu = 'folder';
             } else {
                 if (fileExtension === 'html' || fileExtension === 'htmldl' || fileExtension === 'htm' || fileExtension === 'htmdl') {
-                    if(node.Path.startsWith('/__modules')){
-                        menu = 'module';
+                    if(node.Path.startsWith('/__components')){
+                        menu = 'component';
                     } else {
                         menu = 'pages';
                     }
