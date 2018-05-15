@@ -1,6 +1,6 @@
 {
   "name": "kt-treebeard",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "React Tree View Component",
   "main": "index.js",
   "scripts": {
